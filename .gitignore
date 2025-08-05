@@ -1,0 +1,2 @@
+nginx-gateway/.env
+nginx-gateway/nginx/conf.d/jy-default.conf

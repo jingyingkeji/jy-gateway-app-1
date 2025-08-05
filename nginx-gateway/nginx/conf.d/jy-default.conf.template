@@ -2,6 +2,13 @@ server {
     listen ${NGINX_PORT};
     server_name ${NGINX_SERVER_NAME};
 
+    # dify configure
+    location ^~ /adp {
+        rewrite ^/adp/adp/(.*)$ /adp/$1 permanent;
+        proxy_pass http://172.17.0.1:2080$request_uri;
+        include proxy.conf;
+    }
+
     # smartying online configure
     location /smartying/ {
         proxy_pass http://172.17.0.1:24173;
