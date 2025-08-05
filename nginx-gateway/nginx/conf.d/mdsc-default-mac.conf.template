@@ -1,0 +1,18 @@
+server {
+    listen ${NGINX_PORT};
+    server_name ${NGINX_SERVER_NAME};
+
+    # smartying online configure
+    location /smartying/ {
+        proxy_pass http://host.docker.internal:24173;
+        include proxy.conf;
+    }
+
+    # smartying test configure
+    location /smartying-test/ {
+        proxy_pass http://host.docker.internal:25173;
+        include proxy.conf;
+    }
+
+    ${HTTPS_CONFIG}
+}
